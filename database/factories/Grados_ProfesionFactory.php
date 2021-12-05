@@ -16,8 +16,8 @@ class Grados_ProfesionFactory extends Factory
     public function definition()
     {
         return [
-            'codigo_profesor' => Profesor::all()->random()->codigo,
-            'codigo_grado' => Grado::all()->random()->codigo
+            'codigo_profesor' => Profesor::all()->random()->id,
+            'codigo_grado' => Grado::all()->random()->id
         ];
     }
 }

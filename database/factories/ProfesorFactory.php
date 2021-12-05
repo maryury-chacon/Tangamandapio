@@ -17,7 +17,7 @@ class ProfesorFactory extends Factory
             'nombres' => $this->faker->name()." ".$this->faker->name(),
             'apellidos' => $this->faker->lastName()." ".$this->faker->lastName(),
             'profesion' => $this->faker->jobTitle(),
-            'fecha_entrada' => $this->faker->date(), // password
+            'fecha_entrada' => $this->faker->date(),
             'activo' => $this->faker->randomElement($array = array ('A','I')),
         ];
     }

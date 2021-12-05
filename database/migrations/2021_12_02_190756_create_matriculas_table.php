@@ -17,8 +17,8 @@ class CreateMatriculasTable extends Migration
             $table->integer('codigo_estudiante')->unsigned();
             $table->integer('codigo_grado')->unsigned();
             $table->integer('anio');
-            $table->foreign('codigo_estudiante')->references('codigo')->on('estudiantes');
-            $table->foreign('codigo_grado')->references('codigo')->on('grados');
+            $table->foreign('codigo_estudiante')->references('id')->on('estudiantes');
+            $table->foreign('codigo_grado')->references('id')->on('grados');
             $table->timestamps();
         });
     }

@@ -14,7 +14,7 @@ class CreateProfesorsTable extends Migration
     public function up()
     {
         Schema::create('profesors', function (Blueprint $table) {
-            $table->integerIncrements('codigo');
+            $table->integerIncrements('id');
             $table->string('nombres',100);
             $table->string('apellidos',100);
             $table->string('profesion',100);

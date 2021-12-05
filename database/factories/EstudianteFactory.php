@@ -16,8 +16,8 @@ class EstudianteFactory extends Factory
         return [
             'nombres' => $this->faker->name(),
             'apellidos' => $this->faker->lastName()." ".$this->faker->lastName(),
-            'identidad' => $this->faker->numerify('####-####-######'),
-            'ciudad' => $this->faker->country(), // password
+            'identidad' => $this->faker->numerify('070#-199#-#####'),
+            'ciudad' => $this->faker->randomElement($array = array ('Danlí','El Paraíso','Yuscaran','Yauyupe', 'Morocelí', 'San Lucas', 'Trojes')),
             'direccion' => $this->faker->address(),
             'foto' => $this->faker->image(),
         ];

@@ -16,8 +16,8 @@ class CreateGradosProfesionsTable extends Migration
         Schema::create('grados__profesions', function (Blueprint $table) {
             $table->integer('codigo_profesor')->unsigned();
             $table->integer('codigo_grado')->unsigned();
-            $table->foreign('codigo_profesor')->references('codigo')->on('profesors');
-            $table->foreign('codigo_grado')->references('codigo')->on('grados');
+            $table->foreign('codigo_profesor')->references('id')->on('profesors');
+            $table->foreign('codigo_grado')->references('id')->on('grados');
             $table->timestamps();
         });
     }

@@ -16,8 +16,8 @@ class MatriculaFactory extends Factory
     public function definition()
     {
         return [
-            'codigo_estudiante' => Estudiante::all()->random()->codigo,
-            'codigo_grado' => Grado::all()->random()->codigo,
+            'codigo_estudiante' => Estudiante::all()->random()->id,
+            'codigo_grado' => Grado::all()->random()->id,
             'anio' => $this->faker->year(),
         ];
     }
