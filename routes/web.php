@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EstudianteController;
+use App\Http\Controllers\ProfesorController;
+use App\Http\Controllers\GradoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,3 +46,32 @@ Route::get("/estudiantes/busqueda", [EstudianteController::class, "search"])
 
 Route::get("/estudiantes/busqueda", [EstudianteController::class, "buscarEstudiante"])
     ->name("estudiante.buscar");
+
+/*******RUTAS DE PROFESORES***********/
+
+Route::get("/profesores", [ProfesorController::class, "index"])
+    ->name("profesor.index");
+
+Route::get("/profesores/{id}", [ProfesorController::class, "show"])
+    ->name("profesor.show")->where('id', '[0-9]+');
+
+Route::get("/profesores/create", [ProfesorController::class, "create"])
+    ->name("profesor.create");
+
+Route::post("/profesores/create", [EProfesorController::class, "store"])
+    ->name("profesor.create");
+
+Route::get("/profesores/{id}/edit", [ProfesorController::class, "edit"])
+    ->name("profesor.edit")->where('id', '[0-9]+');
+
+Route::put("/profesores/{id}/edit", [ProfesorController::class, "update"])
+    ->name("profesor.edit")->where('id', '[0-9]+');
+
+Route::delete('/profesores/{id}/destroy', [ProfesorController::class, "destroy"])
+    ->name("profesor.destroy");
+
+Route::get("/profesores/busqueda", [ProfesorController::class, "search"])
+    ->name("profesor.search");
+
+Route::get("/profesores/busqueda", [ProfesorController::class, "buscarProfesor"])
+    ->name("profesor.buscar");    

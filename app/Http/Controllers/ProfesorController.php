@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profesor;
 use Illuminate\Http\Request;
 
 class ProfesorController extends Controller
@@ -11,9 +12,11 @@ class ProfesorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+          //$estudiantes = Estudiante::search($request->search)->paginate(10);
+          $profesores = Profesor::search($request->search)->paginate(8);
+          return view('profesores.profesores_index')->with('profesores', $profesores);
     }
 
     /**
