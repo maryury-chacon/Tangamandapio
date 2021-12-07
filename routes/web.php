@@ -75,3 +75,32 @@ Route::get("/profesores/busqueda", [ProfesorController::class, "search"])
 
 Route::get("/profesores/busqueda", [ProfesorController::class, "buscarProfesor"])
     ->name("profesor.buscar");    
+
+    /*******RUTAS DE GRADOS***********/
+
+Route::get("/grados", [GradoController::class, "index"])
+->name("grado.index");
+
+Route::get("/grados/{id}", [GradoController::class, "show"])
+->name("grado.show")->where('id', '[0-9]+');
+
+Route::get("/grados/create", [GradoController::class, "create"])
+->name("grado.create");
+
+Route::post("/grados/create", [GradoController::class, "store"])
+->name("grado.create");
+
+Route::get("/grados/{id}/edit", [GradoController::class, "edit"])
+->name("grado.edit")->where('id', '[0-9]+');
+
+Route::put("/grados/{id}/edit", [GradoController::class, "update"])
+->name("grado.edit")->where('id', '[0-9]+');
+
+Route::delete('/grados/{id}/destroy', [GradoController::class, "destroy"])
+->name("grado.destroy");
+
+Route::get("/grados/busqueda", [GradoController::class, "search"])
+->name("grado.search");
+
+Route::get("/grados/busqueda", [GradoController::class, "buscarGrado"])
+->name("grado.buscar");    
