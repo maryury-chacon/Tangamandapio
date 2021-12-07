@@ -58,7 +58,7 @@ Route::get("/profesores/{id}", [ProfesorController::class, "show"])
 Route::get("/profesores/create", [ProfesorController::class, "create"])
     ->name("profesor.create");
 
-Route::post("/profesores/create", [EProfesorController::class, "store"])
+Route::post("/profesores/create", [ProfesorController::class, "store"])
     ->name("profesor.create");
 
 Route::get("/profesores/{id}/edit", [ProfesorController::class, "edit"])
