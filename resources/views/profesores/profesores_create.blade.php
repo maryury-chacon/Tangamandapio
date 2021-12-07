@@ -9,7 +9,7 @@
 
                 <div class="col" style="margin: 0 auto">
                     <ul class="list-group" style="width: 33rem; margin: 0 auto">
-                        <li class="list-group-item" style="background-color:#151E6D">
+                        <li class="list-group-item" style="background-color:#1595eb">
                            <h2 style="color:#ffffff; text-align: center">
                                 REGISTRAR PROFESOR
                             </h2>

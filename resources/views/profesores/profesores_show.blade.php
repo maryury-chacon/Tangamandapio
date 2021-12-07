@@ -4,8 +4,8 @@
     <div class="container">
         <div>
             <div class="card" style="border-style: none!important; margin-top: 25px">
-                <div class="container" style="border-style: none!important; background-color: #151E6D; border-radius: 5px; width: 42rem">
-                    <li class="list-group-item" style="border-style: none!important; width: 40rem; margin: 0 auto; background: #151E6D" >
+                <div class="container" style="border-style: none!important; background-color: #1595eb; border-radius: 5px; width: 42rem">
+                    <li class="list-group-item" style="border-style: none!important; width: 40rem; margin: 0 auto; background: #1595eb" >
                         <h2 style="color:#ffffff; text-align: center">
                             Profesor
                         </h2>
