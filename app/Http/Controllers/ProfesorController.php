@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Grados_Profesion;
 use App\Models\Profesor;
 use Illuminate\Http\Request;
 
@@ -142,11 +143,17 @@ class ProfesorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($id)
     {
-        $profesor = Profesor::findOrfail($id);
-        $profesor->delete();
 
+        $profesor = Profesor::findOrfail($id);
+        $variable = Grados_Profesion::where("codigo_profesor", "=", $id)->get();
+        if ($variable->count() > 0) {
+            return redirect()->route("profesor.index")->with("error", "No se puede eliminar el profesor porque ya está asignado a un grado");
+        }
+
+        $profesor->delete();
         return redirect()->route("profesor.index")->with("error", "el profesor fue eliminado correctamente");
     }
 }

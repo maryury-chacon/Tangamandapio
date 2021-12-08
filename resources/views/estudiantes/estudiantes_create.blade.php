@@ -15,7 +15,6 @@
                             </h2>
                             <hr style="border-top: 2px solid white; border-bottom: 2px solid white; border-left:none; border-right:none; height: 2px; ">
 
-
                             <div class="col-md-11" style="margin: 0 auto">
                                 <form id="form" style="margin: 0 auto" enctype="multipart/form-data"
                                       action="{{route("estudiante.create")}}"
@@ -99,7 +98,6 @@
                                         @enderror
                                     </div>
 
-
                                         <div class="d-grid gap-2" style="margin: 0 auto">
                                             <label style="color: white"><strong>Dirección:</strong></label>
                                             <textarea class="form-control"
@@ -115,7 +113,6 @@
                                             </span>
                                             @enderror
                                         </div>
-
 
                                     <br>
                                     <div class="d-grid gap-2" style="margin: 0 auto">

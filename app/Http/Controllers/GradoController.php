@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Grado;
+use App\Models\Grados_Profesion;
 use Illuminate\Http\Request;
 
 class GradoController extends Controller
@@ -121,10 +122,18 @@ class GradoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($id)
     {
+
         $grado = Grado::findOrfail($id);
+        $variable = Grados_Profesion::where("codigo_grado", "=", $id)->get();
+        if ($variable->count() > 0) {
+            return redirect()->route("grado.index")->with("error", "No se puede eliminar el grado porque ya está asignado a un profesor");
+        }
+
         $grado->delete();
         return redirect()->route("grado.index")->with("error", "el grado fue eliminado correctamente");
     }
+
 }

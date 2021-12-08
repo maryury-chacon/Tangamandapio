@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Estudiante;
+use App\Models\Matricula;
 use Illuminate\Http\Request;
 
 class EstudianteController extends Controller
@@ -151,9 +152,14 @@ class EstudianteController extends Controller
      */
     public function destroy($id)
     {
-        $estudiante = Estudiante::findOrfail($id);
-        $estudiante->delete();
 
+        $estudiante = Estudiante::findOrFail($id);
+        $matriculaAsignadaAEstudiante = Matricula::where("codigo_estudiante", "=", $id)->get();
+        if ($matriculaAsignadaAEstudiante->count() > 0) {
+            return redirect()->route("estudiante.index")->with("error", "No se puede eliminar el alumno porque ya está matriculado");
+        }
+
+        $estudiante->delete();
         return redirect()->route("estudiante.index")->with("error", "el estudiante fue eliminado correctamente");
     }
 }
