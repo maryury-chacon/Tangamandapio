@@ -17,9 +17,11 @@
 
 
                             <div class="col-md-11" style="margin: 0 auto">
-                                <form id="form_proveedores" style="margin: 0 auto" enctype="multipart/form-data"
+                                <form id="form_proveedores" style="margin: 0 auto"
+                                      enctype="multipart/form-data"
                                       action="{{route("profesor.edit",["id"=>$profesor->id])}}"
                                       method="post">
+                                    @method("PUT")
                                     @csrf
 
                                     <div class="d-grid gap-2" style="margin: 0 auto">
@@ -30,10 +32,10 @@
                                                    pattern="[A-Za-záéíóúñÑ ]{2,50}"
                                                    required
                                                    @if(old("nombres"))
-                                               value="{{old("nombres")}}"
-                                               @else
-                                               value="{{$profesor->nombres}}"
-                                               @endif
+                                                   value="{{old("nombres")}}"
+                                                   @else
+                                                   value="{{$profesor->nombres}}"
+                                                   @endif
                                                    maxlength="50" name="nombres" id="nombres">
                                             @error('nombres')
                                             <span class="invalid-feedback" role="alert">
@@ -72,9 +74,7 @@
                                                       value="{{$profesor->profesion}}"
                                                      @endif
                                                       maxlength="50"
-                                                      id="profesion" name="profesion"
-                                                      
-                                            ></input>
+                                                      id="profesion" name="profesion">
                                             @error('apellidos')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong style="color: white">{{ $message }}</strong>
@@ -82,35 +82,13 @@
                                             @enderror
                                         </div>
 
-
-                                    <!-- <div class="d-grid gap-2" style="margin: 0 auto">
-                                        <label style="color: white"><strong>Identidad:</strong></label>
-                                        <input class="form-control  @error('identidad') is-invalid @enderror"
-                                               placeholder=""
-                                               required
-                                               value="{{old("identidad")}}"
-                                               maxlength="50" name="identidad" id="identidad">
-                                        @error('identidad')
-                                        <span class="invalid-feedback" role="alert">
-                                                <strong style="color: white">{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div> -->
-
                                     <div class="d-grid gap-2" style="margin: 0 auto">
                                         <label style="color: white"><strong>Estado:</strong></label>
-                                            <select class="form-select" aria-label="" name="estado" id="estado" 
-                                            @if(old("activo"))
-                                                      value="{{old("activo")}}"
-                                                      @else
-                                                      value="{{$profesor->activo}}"
-                                                     @endif>
-                                            <option selected value ="Seleccionar">Seleccionar..</option>
-                                                <option value ="Activo">A</option>
-                                                <option value="inactivo">I</option>
-                                                
-                                            </select>
-                                        @error('ciudad')
+                                        <select name="activo" id="activo">
+                                            <option value="A" {{ old('activo', $profesor->activo) == "A" ? 'selected' : '' }}>Activo</option>
+                                            <option value="I" {{ old('activo', $profesor->activo) == "I" ? 'selected' : '' }}>Inactivo</option>
+                                        </select>
+                                        @error('activo')
                                         <span class="invalid-feedback" role="alert">
                                                 <strong style="color: white">{{ $message }}</strong>
                                             </span>
@@ -118,15 +96,25 @@
                                     </div>
 
                                     <div class="d-grid gap-2" style="margin: 0 auto">
-                                    <label style="color: white"><strong>Fecha:</strong></label>
-                                    <input size="16" type="" placeholder="aa/mm/dd" class="form-control" id="fecha" name="fecha"  
-                                    
-                                    @if(old("fecha_entrada"))
-                                                      value="{{old("fecha_entrada")}}"
-                                                      @else
-                                                      value="{{$profesor->fecha_entrada}}"
-                                                     @endif>
-                                    
+                                        <label style="color: white"><strong>Fecha de entrada:</strong></label>
+                                        <input class="form-control  @error('fecha_entrada') is-invalid @enderror"
+                                               placeholder=""
+                                               type="date"
+                                               data-date-start-date="+0d"
+                                               pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+                                               required
+                                               @if(old("fecha_entrada"))
+                                               value="{{old("fecha_entrada")}}"
+                                               @else
+                                               value="{{$profesor->fecha_entrada}}"
+                                               @endif
+                                               minlength="10"
+                                               maxlength="10" name="fecha_entrada" id="fecha_entrada">
+                                        @error('fecha_entrada')
+                                        <span class="invalid-feedback" role="alert">
+                                                <strong style="color: white">{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                     <br>
@@ -136,7 +124,6 @@
                                     <br>
                                 </form>
                             </div>
-
                         </li>
                     </ul>
                 </div>
@@ -154,6 +141,7 @@
                     return false;
                 }
             }
+
             function f_letra(evt) {
                 var code = (evt.which) ? evt.which : evt.keyCode;
                 if (code == 8 || code == 32) {
@@ -164,6 +152,9 @@
                     return false;
                 }
             }
+
+
+
         </script>
 
 @endsection

@@ -17,7 +17,7 @@
 
 
                             <div class="col-md-11" style="margin: 0 auto">
-                                <form id="form_proveedores" style="margin: 0 auto" enctype="multipart/form-data"
+                                <form id="form" style="margin: 0 auto" enctype="multipart/form-data"
                                       action="{{route("estudiante.create")}}"
                                       method="post">
                                     @csrf
@@ -46,7 +46,8 @@
                                                pattern="[A-Za-záéíóúñÑ ]{2,50}"
                                                required
                                                value="{{old("apellidos")}}"
-                                               maxlength="50" name="apellidos" id="apellidos">
+                                               minlength="15"
+                                               maxlength="15" name="apellidos" id="apellidos">
                                         @error('apellidos')
                                         <span class="invalid-feedback" role="alert">
                                                 <strong style="color: white">{{ $message }}</strong>

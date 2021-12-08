@@ -16,7 +16,7 @@
 
 
                             <div class="col-md-11" style="margin: 0 auto">
-                                <form id="form_proveedores" style="margin: 0 auto" enctype="multipart/form-data"
+                                <form id="form" style="margin: 0 auto" enctype="multipart/form-data"
                                       action="{{route("estudiante.edit",["id"=>$estudiante->id])}}"
                                       method="post">
                                     @method("PUT")
@@ -37,8 +37,8 @@
                                                maxlength="50" name="nombres" id="nombres">
                                         @error('nombres')
                                         <span class="invalid-feedback" role="alert">
-                                        <strong style="color: white">{{ $message }}</strong>
-                                    </span>
+                                            <strong style="color: white">{{ $message }}</strong>
+                                        </span>
                                         @enderror
                                     </div>
 
@@ -82,30 +82,28 @@
                                         @enderror
                                     </div>
 
-
-
                                     <div class="d-grid gap-2" style="margin: 0 auto">
                                         <label style="color: white"><strong>Ciudad:</strong></label>
                                         <select name="ciudad" id="ciudad">
-                                            <option selected value ="Danlí">Danlí</option>
-                                            <option value="Morocelí">Morocelí</option>
-                                            <option value="El Paraíso">El Paraíso</option>
-                                            <option value="Yauyupe">Yauyupe</option>
-                                            <option value="Yuscarán">Yuscarán</option>
-                                            <option value="Alauca">Alauca</option>
-                                            <option value="Güinope">Güinope</option>
-                                            <option value="Jacaleapa">Jacaleapa</option>
-                                            <option value="Liure">Liure</option>
-                                            <option value="Soledad">Soledad</option>
-                                            <option value="Oropolí">Oropolí</option>
-                                            <option value="Potrerillos">Potrerillos</option>
-                                            <option value="San Antonio de Flores">San Antonio de Flores</option>
-                                            <option value="San Lucas">San Lucas</option>
-                                            <option value="San Matías">San Matías</option>
-                                            <option value="Teupasenti">Teupasenti</option>
-                                            <option value="Trojes">Trojes</option>
-                                            <option value="Texiguat">Texiguat</option>
-                                            <option value="Vado Ancho">Vado Ancho</option>
+                                            <option value="Danlí" {{ old('ciudad', $estudiante->ciudad) == "Danlí" ? 'selected' : '' }}>Danlí</option>
+                                            <option value="Morocelí" {{ old('ciudad', $estudiante->ciudad) == "Morocelí" ? 'selected' : '' }}>Morocelí</option>
+                                            <option value="El Paraíso" {{ old('ciudad', $estudiante->ciudad) == "El Paraíso" ? 'selected' : '' }}>El Paraíso</option>
+                                            <option value="Yauyupe" {{ old('ciudad', $estudiante->ciudad) == "Yauyupe" ? 'selected' : '' }}>Yauyupe</option>
+                                            <option value="Yuscarán" {{ old('ciudad', $estudiante->ciudad) == "Yuscarán" ? 'selected' : '' }}>Yuscarán</option>
+                                            <option value="Alauca" {{ old('ciudad', $estudiante->ciudad) == "Alauca" ? 'selected' : '' }}>Alauca</option>
+                                            <option value="Oropolí" {{ old('ciudad', $estudiante->ciudad) == "Oropolí" ? 'selected' : '' }}>Oropolí</option>
+                                            <option value="San Antonio de Flores" {{ old('ciudad', $estudiante->ciudad) == "San Antonio de Flores" ? 'selected' : '' }}>San Antonio de Flores</option>
+                                            <option value="Liure" {{ old('ciudad', $estudiante->ciudad) == "Liure" ? 'selected' : '' }}>Liure</option>
+                                            <option value="Soledad" {{ old('ciudad', $estudiante->ciudad) == "Soledad" ? 'selected' : '' }}>Soledad</option>
+                                            <option value="Jacaleapa" {{ old('ciudad', $estudiante->ciudad) == "Jacaleapa" ? 'selected' : '' }}>Jacaleapa</option>
+                                            <option value="Güinope" {{ old('ciudad', $estudiante->ciudad) == "Güinope" ? 'selected' : '' }}>Güinope</option>
+                                            <option value="Potrerillos" {{ old('ciudad', $estudiante->ciudad) == "Potrerillos" ? 'selected' : '' }}>Potrerillos</option>
+                                            <option value="San Lucas" {{ old('ciudad', $estudiante->ciudad) == "San Lucas" ? 'selected' : '' }}>San Lucas</option>
+                                            <option value="San Matías" {{ old('ciudad', $estudiante->ciudad) == "San Matías" ? 'selected' : '' }}>San Matías</option>
+                                            <option value="Teupasenti" {{ old('ciudad', $estudiante->ciudad) == "Teupasenti" ? 'selected' : '' }}>Teupasenti</option>
+                                            <option value="Trojes" {{ old('ciudad', $estudiante->ciudad) == "Trojes" ? 'selected' : '' }}>Trojes</option>
+                                            <option value="Texiguat" {{ old('ciudad', $estudiante->ciudad) == "Texiguat" ? 'selected' : '' }}>Texiguat</option>
+                                            <option value="Vado Ancho" {{ old('ciudad', $estudiante->ciudad) == "Vado Ancho" ? 'selected' : '' }}>Vado Ancho</option>
                                         </select>
                                         @error('ciudad')
                                         <span class="invalid-feedback" role="alert">

@@ -52,9 +52,13 @@
                             <tr id="resultados">
                                 <td style="font: caption; text-align: center">{{$profesor->id}}</td>
                                 <td style="font: caption; text-align: left">{{$profesor->nombres}} {{$profesor->apellidos}}</td>
-                                <td style="font: caption; text-align: center">{{$profesor->profesion}}</td>
-                                <td style="font: caption; text-align: left">{{$profesor->fecha_entrada}}</td>
-                                <td style="font: caption; text-align: left">{{$profesor->activo}}</td>
+                                <td style="font: caption; text-align: left">{{$profesor->profesion}}</td>
+                                <td style="font: caption; text-align: left">{{\Carbon\Carbon::parse($profesor->fecha_entrada)->locale("es")->isoFormat("DD MMMM, YYYY")}}</td>
+                                @if($profesor->activo === "A")
+                                    <td style="font: caption; text-align: center">Activo</td>
+                                @else
+                                    <td style="font: caption; text-align: center">Inactivo</td>
+                                @endif
                                 <td style="text-align: center">
                                     <a class="btn btn-" style="background: #151E6D" href="{{route("profesor.show",["id"=>$profesor->id])}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill=" #FFFFFF" class="bi bi-layers-fill" viewBox="0 0 16 16">
                                             <path d="M7.765 1.559a.5.5 0 0 1 .47 0l7.5 4a.5.5 0 0 1 0 .882l-7.5 4a.5.5 0 0 1-.47 0l-7.5-4a.5.5 0 0 1 0-.882l7.5-4z"/>

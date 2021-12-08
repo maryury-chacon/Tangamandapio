@@ -41,8 +41,8 @@ class ProfesorController extends Controller
             "nombres" => "required|max:50",
             "apellidos" => "required|max:50",
             "profesion" => "required|max:200",
-         
-
+            "fecha_entrada" => "required",
+            "activo" => "required"
         ], [
             "nombres.required" => "Se requiere ingresar los nombres del profesor.",
             "nombres.max" => "Los nombres no debe ser máximo a 50 caracteres.",
@@ -50,17 +50,22 @@ class ProfesorController extends Controller
             "apellidos.required" => "Se requiere ingresar los apellidos del profesor.",
             "apellidos.max" => "Los apellidos no debe ser máximo a 50 caracteres.",
 
-         
+
             "profesion.required" => "Se requiere ingresar la profesion del profesor.",
             "profesion.max" => "La profesion no debe tener más de 200 caracteres.",
+
+            "fecha_entrada.required" => "Se requiere ingresar la fecha en el formato AAAA-MM-DD.",
+            "fecha_entrada.max" => "La profesion no debe tener más de 100 caracteres.",
+
+            "activo.required" => "Se requiere seleccionar el estado del profesor."
         ]);
 
         $profesor = new Profesor();
         $profesor->nombres = $request->input("nombres");
         $profesor->apellidos = $request->input("apellidos");
         $profesor->profesion = $request->input("profesion");
-        $profesor->fecha_entrada = $request->input("fecha");
-        $profesor->activo = $request->input("estado");
+        $profesor->fecha_entrada = $request->input("fecha_entrada");
+        $profesor->activo = $request->input("activo");
         $profesor->save();
         return redirect()->route("profesor.index")->with("exito", "Se creó exitosamente el profesor");
     }
@@ -102,8 +107,8 @@ class ProfesorController extends Controller
             "nombres" => "required|max:50",
             "apellidos" => "required|max:50",
             "profesion" => "required|max:200",
-         
-
+            "fecha_entrada" => "required",
+            "activo" => "required"
         ], [
             "nombres.required" => "Se requiere ingresar los nombres del profesor.",
             "nombres.max" => "Los nombres no debe ser máximo a 50 caracteres.",
@@ -111,15 +116,21 @@ class ProfesorController extends Controller
             "apellidos.required" => "Se requiere ingresar los apellidos del profesor.",
             "apellidos.max" => "Los apellidos no debe ser máximo a 50 caracteres.",
 
-         
             "profesion.required" => "Se requiere ingresar la profesion del profesor.",
             "profesion.max" => "La profesion no debe tener más de 200 caracteres.",
+
+            "fecha_entrada.required" => "Se requiere ingresar la fecha en el formato AAAA-MM-DD.",
+            "fecha_entrada.max" => "La profesion no debe tener más de 100 caracteres.",
+
+            "activo.required" => "Se requiere seleccionar el estado del profesor.",
         ]);
 
         $profesor = Profesor::findOrFail($id);
         $profesor->nombres = $request->input("nombres");
         $profesor->apellidos = $request->input("apellidos");
         $profesor->profesion = $request->input("profesion");
+        $profesor->fecha_entrada = $request->input("fecha_entrada");
+        $profesor->activo = $request->input("activo");
         $profesor->save();
 
         return redirect()->route("profesor.index")->with("exito", "los datos del profesor fueron actualizados correctamente");

@@ -15,7 +15,6 @@ class GradoController extends Controller
     {
         $grado = Grado::search($request->search)->paginate(8);
         return view('grados.grado_index')->with('grados', $grado);
-       
     }
 
     /**
@@ -25,7 +24,7 @@ class GradoController extends Controller
      */
     public function create()
     {
-        return view('grados.grado_create')
+        return view('grados.grado_create');
     }
 
     /**
@@ -38,10 +37,8 @@ class GradoController extends Controller
     {
         $this->validate($request, [
             "jornada" => "required|max:50",
-            "seccion" => "required|max:50",
-            "aula" => "required|max:50",
-            
-
+            "seccion" => "required|max:1",
+            "aula" => "required|max:4",
         ], [
             "jornada.required" => "Se requiere ingresar lo jornada del grado.",
             "jornada.max" => "Los jornada no debe ser máximo a 50 caracteres.",
@@ -59,7 +56,7 @@ class GradoController extends Controller
         $grado->aula = $request->input("aula");
         $grado->save();
         return redirect()->route("grado.index")->with("exito", "Se creó exitosamente el grado");
-    
+
     }
 
     /**
@@ -83,9 +80,8 @@ class GradoController extends Controller
     public function edit($id)
     {
         $grado = Grado::findOrFail($id);
-        return view("grados.grados_update")->with("grados", $grado);
+        return view("grados.grado_update")->with("grado", $grado);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -96,10 +92,9 @@ class GradoController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            "jornada" => "required|max:500",
-            "seccion" => "required|max:500",
-            "Aula" => "required|max:100",
-
+            "jornada" => "required|max:50",
+            "seccion" => "required",
+            "aula" => "required|max:4",
         ], [
             "jornada.required" => "Se requiere ingresar las jornada de los grados.",
             "jornada.max" => "Las jornada no debe ser máximo a 50 caracteres.",
@@ -130,7 +125,6 @@ class GradoController extends Controller
     {
         $grado = Grado::findOrfail($id);
         $grado->delete();
-
         return redirect()->route("grado.index")->with("error", "el grado fue eliminado correctamente");
     }
 }

@@ -14,7 +14,7 @@ class ProfesorFactory extends Factory
     public function definition()
     {
         return [
-            'nombres' => $this->faker->name()." ".$this->faker->name(),
+            'nombres' => $this->faker->firstName()." ".$this->faker->firstName(),
             'apellidos' => $this->faker->lastName()." ".$this->faker->lastName(),
             'profesion' => $this->faker->jobTitle(),
             'fecha_entrada' => $this->faker->date(),

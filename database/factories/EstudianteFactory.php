@@ -14,10 +14,11 @@ class EstudianteFactory extends Factory
     public function definition()
     {
         return [
-            'nombres' => $this->faker->name(),
+            'nombres' => $this->faker->firstName()." ".$this->faker->firstName(),
             'apellidos' => $this->faker->lastName()." ".$this->faker->lastName(),
             'identidad' => $this->faker->numerify('070#-199#-#####'),
-            'ciudad' => $this->faker->randomElement($array = array ('Danlí','El Paraíso','Yuscaran','Yauyupe', 'Morocelí', 'San Lucas', 'Trojes')),
+            'ciudad' => $this->faker->randomElement($array = array ('Danlí','El Paraíso','Yuscaran','Yauyupe', 'Morocelí', 'San Lucas', 'Trojes',
+            'Vado Ancho','Texiguat', 'Oropolí', 'San Matías', 'Liure', 'Soledad')),
             'direccion' => $this->faker->address(),
             'foto' => $this->faker->image(),
         ];

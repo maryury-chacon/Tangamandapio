@@ -14,9 +14,9 @@ class GradoFactory extends Factory
     public function definition()
     {
         return [
-            'jornada' => $this->faker->randomElement($array = array ('Vespertino','Matutino')),
-            'seccion' => $this->faker->word(),
-            'aula' => $this->faker->numerify('Al##'),
+            'jornada' => $this->faker->randomElement($array = array ('Vespertina','Matutina', 'Nocturna')),
+            'seccion' => $this->faker->randomElement($array = array ('A','B', 'C', 'D')),
+            'aula' => $this->faker->numerify('AL##'),
         ];
     }
 }

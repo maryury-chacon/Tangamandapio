@@ -14,7 +14,6 @@ class EstudianteController extends Controller
      */
     public function index(Request $request)
     {
-        //$estudiantes = Estudiante::search($request->search)->paginate(10);
         $estudiantes = Estudiante::search($request->search)->paginate(8);
         return view('estudiantes.estudiantes_index')->with('estudiantes', $estudiantes);
     }
@@ -46,6 +45,7 @@ class EstudianteController extends Controller
 
         ], [
             "nombres.required" => "Se requiere ingresar los nombres del estudiante.",
+            "nombres.min" => "Los nombres no debe ser minimo a 2 caracteres.",
             "nombres.max" => "Los nombres no debe ser máximo a 50 caracteres.",
 
             "apellidos.required" => "Se requiere ingresar los apellidos del estudiante.",

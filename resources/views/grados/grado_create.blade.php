@@ -17,57 +17,63 @@
 
 
                             <div class="col-md-11" style="margin: 0 auto">
-                                <form id="form_proveedores" style="margin: 0 auto" enctype="multipart/form-data"
+                                <form id="form" style="margin: 0 auto" enctype="multipart/form-data"
                                       action="{{route("grado.create")}}"
                                       method="post">
                                     @csrf
 
                                     <div class="d-grid gap-2" style="margin: 0 auto">
-                                            <label style="color: white"><strong>Jornada:</strong></label>
-                                            <input class="form-control  @error('jornada') is-invalid @enderror"
-                                                   placeholder=""
-                                                   onkeypress="return f_letra(event);"
-                                                   pattern="[A-Za-záéíóúñÑ ]{2,50}"
-                                                   required
-                                                   value="{{old("jornada")}}"
-                                                   maxlength="50" name="jornada" id="jornada">
-                                            @error('jornada')
-                                            <span class="invalid-feedback" role="alert">
+                                        <label style="color: white"><strong>Jornada:</strong></label>
+                                        <select class="form-select" aria-label=""
+                                                name="jornada"
+                                                id="jornada"
+                                                value="{{old("jornada")}}">
+                                            <option selected value ="Matutina">Matutina</option>
+                                            <option value="Vespertina">Vespertina</option>
+                                            <option value="Nocturna">Nocturna</option>
+                                        </select>
+                                        @error('jornada')
+                                        <span class="invalid-feedback" role="alert">
                                                 <strong style="color: white">{{ $message }}</strong>
-                                            </span>
-                                            @enderror
+                                        </span>
+                                        @enderror
                                     </div>
 
                                     <div class="d-grid gap-2" style="margin: 0 auto">
                                         <label style="color: white"><strong>Seccion:</strong></label>
-                                        <input class="form-control  @error('seccion') is-invalid @enderror"
-                                               placeholder=""
-                                               onkeypress="return f_letra(event);"
-                                               pattern="[A-Za-záéíóúñÑ ]{2,50}"
-                                               required
-                                               value="{{old("seccion")}}"
-                                               maxlength="50" name="seccion" id="seccion">
+                                        <select class="form-select" aria-label=""
+                                                name="seccion"
+                                                id="seccion"
+                                                value="{{old("seccion")}}">
+                                            <option selected value ="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
+                                            <option value="D">D</option>
+                                            <option value="E">E</option>
+                                            <option value="F">F</option>
+                                        </select>
                                         @error('seccion')
                                         <span class="invalid-feedback" role="alert">
-                                                <strong style="color: white">{{ $message }}</strong>
-                                            </span>
+                                            <strong style="color: #FFFFFF">{{ $message }}</strong>
+                                        </span>
                                         @enderror
                                     </div>
 
                                     <div class="d-grid gap-2" style="margin: 0 auto">
                                             <label style="color: white"><strong>Aula:</strong></label>
                                             <input class="form-control"
-                                                      required
-                                                      value="{{old("aula")}}"
-                                                      maxlength="50"
-                                                      id="aula" name="aula"
-                                                      
-                                            ></input>
-                                            @error('aula')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong style="color: white">{{ $message }}</strong>
-                                            </span>
-                                            @enderror
+                                                   pattern="[AL]{2}[0-9]{2}"
+                                                   required
+                                                   value="{{old("aula")}}"
+                                                   minlength="4"
+                                                   maxlength="4"
+                                                   id="aula"
+                                                   name="aula">
+                                        @error('aula')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong style="color: #FFFFFF">{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                         </div>
 
                                     <br>
@@ -95,11 +101,12 @@
                     return false;
                 }
             }
+
             function f_letra(evt) {
                 var code = (evt.which) ? evt.which : evt.keyCode;
-                if (code == 8 || code == 32) {
-                    return true;
-                } else if (code >= 65) {
+                if (code == 8 || code == 13) {
+                    return false;
+                } else if (code >= 65 && code <= 70) {
                     return true;
                 } else {
                     return false;

@@ -21,9 +21,15 @@
                         <p style="color: white; margin-left: 20px">Código: <strong style="color: white">{{$profesor->id}} </strong></p>
                         <p style="color: white; margin-left: 20px">Nombre: <strong style="color: white">{{$profesor->nombres}} {{$profesor->apellidos}}</strong></p>
                         <p style="color: white; margin-left: 20px">Profesion: <strong style="color: white">{{$profesor->profesion}} </strong> </p>
-                        <p style="color: white; margin-left: 20px">Fecha Entrada: <strong style="color: white">{{$profesor->fecha_entrada}} </strong> </p>
-                        <p style="color: white; margin-left: 20px">estado: <strong style="color: white">{{$profesor->activo}} </strong> </p>
-                    </div>
+                        <p style="color: white; margin-left: 20px">Fecha Entrada: <strong style="color: white">{{\Carbon\Carbon::parse($profesor->fecha_entrada)->locale("es")->isoFormat("DD MMMM, YYYY")}}</strong> </p>
+
+                    @if($profesor->activo === "I")
+                            <p style="color: white; margin-left: 20px">Estado: <strong style="color: white">Inactivo</strong> </p>
+                        @else
+                            <p style="color: white; margin-left: 20px">Estado: <strong style="color: white">Activo </strong> </p>
+                        @endif
+
+                        </div>
 
                 </div>
             </div>
